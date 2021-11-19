@@ -36,11 +36,14 @@ namespace Worker
                     Thread.Sleep(dots * 1000);
 
                     Console.WriteLine(" [x] Done");
+
+                    // Obs: é possível acessar o canal via ((EventingBasicConsumer)sender).Model here
+                    channel.BasicAck(deliveryTag: ea.DeliveryTag, multiple: false);
                 };
 
                 channel.BasicConsume(
                     queue: "task_queue",
-                    autoAck: true,
+                    autoAck: false,
                     consumer: consumer
                 );
 
