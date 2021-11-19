@@ -24,6 +24,9 @@ namespace Worker
                     arguments: null
                 );
 
+                // Não permitir que o consumidor receba mais de 1 mensagem por vez
+                channel.BasicQos(prefetchSize: 0, prefetchCount: 1, global: false);
+
                 var consumer = new EventingBasicConsumer(channel);
                 consumer.Received += (model, ea) =>
                 {

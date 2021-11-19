@@ -35,9 +35,11 @@ namespace NewTask
                     body: body
                 );
 
-                Console.WriteLine("Press [enter] to exit.");
-                // Console.ReadLine();
+                Console.WriteLine(" [x] Sent {0}", message);
             }
+
+            Console.WriteLine("Press [enter] to exit.");
+            Console.ReadLine();
         }
 
         private static string GetMessage(string[] args)
